@@ -12,7 +12,6 @@ router.post("/register", async (req, res) => {
       return;
     }
 
-    // Extract user data from the request body
     const { username, email, password } = req.body;
 
     // Hash and salt the password

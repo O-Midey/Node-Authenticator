@@ -3,7 +3,8 @@ const app = express();
 const mongoose = require("mongoose");
 const registerRoute = require("./Routes/registerRoute.js");
 const loginRoute = require("./Routes/loginRoute.js");
-const uri = "mongodb://localhost:27017/Authenticator";
+require("dotenv").config({ path: "config.env" });
+const uri = process.env.DB_URI;
 async function main() {
   try {
     // Connect to the MongoDB database
@@ -15,7 +16,6 @@ async function main() {
     console.log("Connected to MongoDB");
   } catch (err) {
     console.error("Error connecting to MongoDB or saving user:", err);
-    await client.close();
   }
 }
 
