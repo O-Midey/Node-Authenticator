@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const registerRoute = require("./Routes/registerRoute.js");
-const loginRoute = require("./Routes/login.js");
+const loginRoute = require("./Routes/loginRoute.js");
 const uri = "mongodb://localhost:27017/Authenticator";
 async function main() {
   try {
