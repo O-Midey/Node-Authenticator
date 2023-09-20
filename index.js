@@ -3,7 +3,7 @@ const app = express();
 const mongoose = require("mongoose");
 const registerRoute = require("./Routes/registerRoute.js");
 const loginRoute = require("./Routes/loginRoute.js");
-require("dotenv").config({ path: "config.env" });
+require("dotenv").config();
 const uri = process.env.DB_URI;
 async function main() {
   try {
