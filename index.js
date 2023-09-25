@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const registerRoute = require("./Routes/registerRoute.js");
-const loginRoute = require("./Routes/loginRoute.js");
+const registerRoute = require("./Routes/RegisterRoute.js");
+const loginRoute = require("./Routes/LoginRoute.js");
+const profileRoute = require("./Routes/ProfileRoute.js");
+
+const verifyToken = require("./Middlewares/JwtVerificationMiddleware.js");
 require("dotenv").config();
 const uri = process.env.DB_URI;
 async function main() {
@@ -24,6 +27,7 @@ main();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/users", registerRoute);
+app.use("/users", verifyToken, profileRoute);
 app.use("/", loginRoute);
 
 // Start the Express server
