@@ -27,8 +27,8 @@ main();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/users", registerRoute);
-app.use("/users", verifyToken, profileRoute);
 app.use("/", loginRoute);
+app.use("/users", profileRoute);
 
 // Start the Express server
 const port = process.env.PORT || 3000;

@@ -4,6 +4,9 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const User = require("../Models/userSchema");
 
+require("dotenv").config();
+const secretKey = process.env.JWT_SECRET;
+
 // Login route
 router.post("/login", async (req, res) => {
   try {
@@ -24,7 +27,7 @@ router.post("/login", async (req, res) => {
     }
 
     // Create and sign a JWT with a secret key
-    const token = jwt.sign({ username: username }, "your_secret_key", {
+    const token = jwt.sign({ username: username }, secretKey, {
       expiresIn: "1h", // Token expiration time
     });
     res.status(200).json({ message: "Login successful", token });
